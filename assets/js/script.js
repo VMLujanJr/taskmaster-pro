@@ -33,7 +33,7 @@ var loadTasks = function() {
 
   // loop over object properties
   $.each(tasks, function(list, arr) {
-    console.log(list, arr);
+
     // then loop over sub-array
     arr.forEach(function(task) {
       createTask(task.text, task.date, list);
@@ -44,6 +44,124 @@ var loadTasks = function() {
 var saveTasks = function() {
   localStorage.setItem("tasks", JSON.stringify(tasks));
 };
+
+// ****************************
+// Edit the Task
+// Delegates parent a click to create a p element // delegated p click
+// ****************************
+
+$(".list-group").on("click", "p", function() {
+  var text = $(this)
+  .text()
+  .trim();
+  console.log(text);
+
+  /* creates textarea */
+  var textInput = $("<textarea>") // "textarea" finds elements, but "<textarea>" creates element
+  .addClass("form-control")
+  .val(text);
+  console.log(textInput);
+
+  $(this).replaceWith(textInput);
+  textInput.trigger("focus");
+
+});
+
+// ************************************
+// Update & Save the Task
+// ************************************
+$(".list-group").on("blur", "textarea", function() { // blur event will trigger as soon as user interacts with anything other than the <textarea> element
+  
+  // get the textarea's current value/text
+  var text = $(this)
+    .val()
+    .trim();
+  console.log(text); // do not need console.logs, but helpful to know exactly what you are targeting.
+  
+  // get the parent ul's id attribute
+  var status = $(this)
+    .closest(".list-group")
+    .attr("id")
+    .replace("list-", "");
+  console.log(status);
+
+  // get the task's position in the list of other li elements (similar to an array 0, 1, 2, 3, etc.)
+  var index = $(this) // position of this list-group-item is 1!
+    .closest(".list-group-item")
+    .index();
+  console.log(index);
+
+  // Update Overarching 'tasks' object with new data
+  tasks[status][index].text = text; // check localStorage for the change in the tasks object
+  saveTasks();
+
+  // recreate p element (exists in memory only)
+  var taskP = $("<p>")
+    .addClass("m-1")
+    .text(text);
+  console.log(taskP);
+
+  // replace textarea with p element (brings memory to realization)
+  $(this).replaceWith(taskP);
+  console.log(this);
+});
+
+// ************************************
+// Edit Task Dates
+// ************************************
+// due date was clicked
+$(".list-group").on("click", "span", function() {
+  // get current text
+  var date = $(this)
+    .text()
+    .trim();
+  console.log(date);
+
+  // create new input element (in memory only)
+  var dateInput = $("<input>")
+    .attr("type", "text")
+    .addClass("form-control")
+    .val(date);
+  console.log(dateInput);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
