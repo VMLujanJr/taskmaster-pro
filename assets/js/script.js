@@ -46,7 +46,7 @@ var saveTasks = function() {
 };
 
 // ****************************
-// Edit the Task
+// Edit the Task Description
 // Delegates parent a click to create a p element // delegated p click
 // ****************************
 
@@ -68,7 +68,7 @@ $(".list-group").on("click", "p", function() {
 });
 
 // ************************************
-// Update & Save the Task
+// Update & Save the Task Description
 // ************************************
 $(".list-group").on("blur", "textarea", function() { // blur event will trigger as soon as user interacts with anything other than the <textarea> element
   
@@ -123,8 +123,52 @@ $(".list-group").on("click", "span", function() {
     .addClass("form-control")
     .val(date);
   console.log(dateInput);
+
+  // swap out elements (pulled from memory, made it tangible)
+  $(this).replaceWith(dateInput);
+
+  // automatically focus on new element
+  dateInput.trigger("focus");
 });
 
+// ************************************
+// Update & Save Task Dates
+// ************************************
+$(".list-group").on("blur", "input", function() {
+  // get current text
+  var date = $(this)
+    .val()
+    .trim();
+  console.log(date);
+
+  // get the parent ul's id attribute
+  var status = $(this)
+    .closest(".list-group")
+    .attr("id")
+    .replace("list-", "");
+  console.log(status);
+
+  // get the task's position in the list of other li elements
+  var index = $(this)
+    .closest(".list-group-item")
+    .index(); // this is a function method, has nothing to do with the variable called index
+  console.log(index);
+
+  // update task in array and re-save to localStorage (in memory?)
+  tasks[status][index].date = date;
+  saveTasks();
+  console.log(date);
+
+  // recreate span element with bootstrap classes
+  var taskSpan = $("<span>")
+    .addClass("badge badge-primary badge pill")
+    .text(date);
+  console.log(taskSpan);
+
+  // replace input with span element
+  $(this).replaceWith(taskSpan);
+
+});
 
 
 
