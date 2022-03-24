@@ -24,14 +24,56 @@
       </p>
     </header>
     <main class="col-12 col-lg-9">
-      <div class="m-5">
-        <h2>To Do</h2>
-        <ul id="list-toDo" class="list-group"></ul>
+      <div class="m-5 row justify-content-around">
+        <!-- To Do: Start -->
+        <div class="col-12 col-md-6 col-xl-3 mb-3">
+          <div class="card">
+            <h2 class="card-header">To Do</h2>
+            <ul id="list-toDo" class="list-group list-group-flush"></ul>
+          </div>
+        </div>
+        <!-- In Progress: Start -->
+        <div class="col-12 col-md-6 col-xl-3 mb-3">
+          <div class="card">
+            <h2 class="card-header">In Progress</h2>
+            <ul id="list-inProgress" class="list-group list-group-flush">
+              <li class="list-group-item">
+                <span class="badge badge-primary badge-pill">03/24/2022</span>
+                <p class="m-1">Sample Task In Progress</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- In Review: Start -->
+        <div class="col-12 col-md-6 col-xl-3 mb-3">
+          <div class="card">
+            <h2 class="card-header">In Review</h2>
+            <ul id="list-inReview" class="list-group list-group-flush">
+              <li class="list-group-item">
+                <span class="badge badge-primary badge-pill">03/24/2022</span>
+                <p class="m-1">Sample task in review</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- Task Done: Start -->
+        <div class="col-12 col-md-6 col-xl-3 mb-3">
+          <div class="card">
+            <h2 class="card-header">Task Done</h2>
+            <ul id="list-done" class="list-group list-group-flush">
+              <li class="list-group-item">
+                <span class="badge badge-primary badge-pill">03/24/2022</span>
+                <p class="m-1">Sample task that's done</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- Task Done: End -->
       </div>
     </main>
   </div>
 
-  <!-- Modal -->
+  <!-- Modal / The Modal is a popout screen -->
   <div class="modal fade" id="task-form-modal" tabindex="-1" role="dialog" aria-labelledby="task-form-modal"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -46,11 +88,11 @@
           <form>
             <div class="form-group">
               <label for="modalTaskDescription">Task description</label>
-              <textarea id="modalTaskDescription" rows="3"></textarea>
+              <textarea id="modalTaskDescription" class="form-control" rows="3"></textarea>
             </div>
             <div class="form-group">
               <label for="modalDueDate">Due date</label>
-              <input type="text" id="modalDueDate" placeholder="mm/dd/yyyy" autocomplete="off" />
+              <input type="text" id="modalDueDate" class="form-control" placeholder="mm/dd/yyyy" autocomplete="off" />
             </div>
           </form>
         </div>

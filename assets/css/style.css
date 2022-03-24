@@ -1,3 +1,15 @@
+:root {
+  --primary
+  --secondary
+  --tertiary
+  --quaternary
+  --quinary
+  --senary
+  --septenary
+  --octonary
+  --nonary
+  --denary
+}
 ul.list-group {
   min-height: 130px;
 }
