@@ -5,7 +5,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+  <!-- Links to Bootstrap CSS classes -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" />
+  <!-- Links to jQuery UI themes -->
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css" />
+  <!-- Links to your PERSONAL stylesheet -->
   <link rel="stylesheet" href="./assets/css/style.css" />
   <title>Taskmaster Pro</title>
 </head>
@@ -36,36 +40,21 @@
         <div class="col-12 col-md-6 col-xl-3 mb-3">
           <div class="card">
             <h2 class="card-header text-light bg-dark">In Progress</h2>
-            <ul id="list-inProgress" class="list-group list-group-flush">
-              <!-- DUMMY DATA <li class="list-group-item">
-                <span class="badge badge-primary badge-pill">03/24/2022</span>
-                <p class="m-1">Sample Task In Progress</p>
-              </li> -->
-            </ul>
+            <ul id="list-inProgress" class="list-group list-group-flush"></ul>
           </div>
         </div>
         <!-- In Review: Start -->
         <div class="col-12 col-md-6 col-xl-3 mb-3">
           <div class="card">
             <h2 class="card-header text-light bg-dark">In Review</h2>
-            <ul id="list-inReview" class="list-group list-group-flush">
-              <!-- DUMMY DATA <li class="list-group-item">
-                <span class="badge badge-primary badge-pill">03/24/2022</span>
-                <p class="m-1">Sample task in review</p>
-              </li> -->
-            </ul>
+            <ul id="list-inReview" class="list-group list-group-flush"></ul>
           </div>
         </div>
         <!-- Task Done: Start -->
         <div class="col-12 col-md-6 col-xl-3 mb-3">
           <div class="card">
             <h2 class="card-header text-light bg-dark">Task Done</h2>
-            <ul id="list-done" class="list-group list-group-flush">
-              <!-- DUMMY DATA <li class="list-group-item">
-                <span class="badge badge-primary badge-pill">03/24/2022</span>
-                <p class="m-1">Sample task that's done</p>
-              </li> -->
-            </ul>
+            <ul id="list-done" class="list-group list-group-flush"></ul>
           </div>
         </div>
         <!-- Task Done: End -->
@@ -107,9 +96,18 @@
     </div>
   </div>
 
+  <!-- CONTENT DELIVERY NETWORKS: CDNs -->
+  <!-- jQuery library -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- jQuery UI needs to load AFTER jQuery library -->
+  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js" integrity="sha256-eTyxS0rkjpLEo16uXTS0uVCS4815lc40K2iVpWDvdSY=" crossorigin="anonymous"></script>
+  <!-- jQuery UI Touch Punch needs to load AFTER jQuery UI -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery-ui-touch-punch@0.2.3/jquery.ui.touch-punch.min.js"></script>
+  <!-- Popper adds Modals -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
+  <!-- Bootstrap helps style your Cascading Style Sheets: CSS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <!-- Your PERSONAL stylesheet -->
   <script src="./assets/js/script.js"></script>
 </body>
 

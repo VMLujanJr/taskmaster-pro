@@ -1,15 +1,16 @@
 :root {
-  --primary
-  --secondary
-  --tertiary
-  --quaternary
-  --quinary
-  --senary
-  --septenary
-  --octonary
-  --nonary
-  --denary
+  --primary: #999999;
+  --secondary: #999999;
+  --tertiary: #999999;
+  --quaternary: #999999;
+  --quinary: #999999;
+  --senary: #999999;
+  --septenary: #999999;
+  --octonary: #999999;
+  --nonary: #999999;
+  --denary: #999999;
 }
+
 ul.list-group {
   min-height: 130px;
 }
