@@ -68,13 +68,13 @@ var auditTask = function(taskEl) {
   else if (Math.abs(moment().diff(time, "days")) <= 2) {
     $(taskEl).addClass("list-group-item-warning");
   }
-}
+  console.log(taskEl);
+};
 
 // ****************************
 // Edit the Task Description
 // Delegates parent a click to create a p element // delegated p click
 // ****************************
-
 $(".list-group").on("click", "p", function() {
   var text = $(this)
   .text()
@@ -214,16 +214,18 @@ $(".card .list-group").sortable({ // connect IDs or Classes INDIVIDUALLY
   tolerance: "pointer",
   helper: "clone", // need to ask about this in more detail
   activate: function(event) { // need to ask about this in more detail
-    console.log("activate", this);
+    $(this).addClass("dropover");
+    $(".bottom-trash").addClass("bottom-trash-drag");
   },
   deactivate: function(event) {
-    console.log("deactivate", this);
+    $(this).removeClass("dropover");
+    $(".bottom-trash").removeClass("bottom-trash-drag");
   },
   over: function(event) {
-    console.log("over", event.target);
+    $(event.target).addClass("dropover-active");
   },
   out: function(event) {
-    console.log("out", event.target);
+    $(event.target).removeClass("dropover-active");
   },
   update: function(event) {
     // array to store the task data in // IMPORTANT: Make sure you declare it first, otherwise it'll be headache to debug and test while you're working here
@@ -265,13 +267,13 @@ $("#trash").droppable({
   tolerance: "touch",
   drop: function (event, ui) {
     ui.draggable.remove();
-    console.log("drop");
+    $(".bottom-trash").removeClass("bottom-trash-active");
   },
   over: function(event, ui) {
-    console.log("over");
+    $(".bottom-trash").addClass("bottom-trash-active");
   },
   out: function(event, ui) {
-    console.log("out");
+    $(".bottom-trash").removeClass("bottom-trash-active");
   }
 });
 
@@ -293,7 +295,7 @@ $("#task-form-modal").on("shown.bs.modal", function() {
 });
 
 // save button in modal was clicked
-$("#task-form-modal .btn-primary").click(function() {
+$("#task-form-modal .btn-save").click(function() {
   // get form values
   var taskText = $("#modalTaskDescription").val();
   var taskDate = $("#modalDueDate").val();
@@ -322,6 +324,13 @@ $("#remove-tasks").on("click", function() {
   }
   saveTasks();
 });
+
+setInterval(function(){
+  $(".card .list-group-item").each(function(index, el) {
+    auditTask(el);
+  });
+/* You could also set 1800000 milliseconds to get 30 minutes  */
+}, (1000 * 60) * 30); // multiply 1000 milliseconds by 60 to get 1 minute, then by 30 to get 30 minutes
 
 // load tasks for the first time
 loadTasks();
